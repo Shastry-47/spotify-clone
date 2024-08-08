@@ -160,11 +160,11 @@ async function main() {
         }
     })
 
-    //Add an event to range
-    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
-        currentSong.volume = parseInt(e.target.value) / 100
-        if(currentSong.volume===0)
-    })
+    // //Add an event to range
+    // document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
+    //     currentSong.volume = parseInt(e.target.value) / 100
+    //     if(currentSong.volume===0)
+    // })
 
 
     //Add an event listener to mute the track
