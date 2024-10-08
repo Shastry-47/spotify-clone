@@ -15,6 +15,7 @@ async function getSongs(folder) {
     currFolder = folder;
     let response = await fetch(`https://shastry-47.github.io/spotify-clone/songs/songs.json`);
     let data = await response.json();
+    console.log(data);
     songs = data[folder];
 
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0];
@@ -80,7 +81,7 @@ async function displayAlbums() {
 
 
 async function main() {
-    await getSongs("songs/ncs/");
+    await getSongs("ncs");
     playMusic(songs[0], true);
 
     await displayAlbums();
