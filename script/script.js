@@ -32,23 +32,35 @@ async function getSongs(folder) {
                             </li>`;
     }
 
-    Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach((e, index) => {
+    // Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach((e, index) => {
+    //     e.addEventListener("click", () => {
+    //         playMusic(songs[index].file);
+    //     });
+    // });
+    // return songs;
+        Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach((e, index) => {
         e.addEventListener("click", () => {
-            playMusic(songs[index].file);
+            playMusic(songs[index].file);  // Ensure songs[index].file is correct
         });
     });
-    return songs;
+
 }
 
 const playMusic = (track, pause = false) => {
-    currentSong.src = `${currFolder}/${track}`;
+    currentSong.src = `https://shastry-47.github.io/spotify-clone/songs/${currFolder}/${track}`;
+    console.log("Audio Source:", currentSong.src);  // Log the audio source
+
     if (!pause) {
-        currentSong.play();
+        currentSong.play().catch(err => {
+            console.error("Error playing audio:", err);
+        });
         play.src = "images/pause.svg";
     }
+    
     document.querySelector(".songInfo").innerHTML = decodeURI(track);
     document.querySelector(".songTime").innerHTML = "00:00 / 00:00";
 }
+
 
 
 async function displayAlbums() {
