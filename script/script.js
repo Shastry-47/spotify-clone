@@ -13,7 +13,7 @@ function secondsToMinutes(seconds) {
 
 async function getSongs(folder) {
     currFolder = folder;
-    let response = await fetch(`https://shastry-47.github.io/spotify-clone/songs.json`);
+    let response = await fetch(`https://shastry-47.github.io/spotify-clone/songs/songs.json`);
     let data = await response.json();
     songs = data[folder];
 
