@@ -46,9 +46,23 @@ async function getSongs(folder) {
 
 }
 
+// const playMusic = (track, pause = false) => {
+//     currentSong.src = `https://shastry-47.github.io/spotify-clone/songs/${currFolder}/${track}`;
+//     console.log("Audio Source:", currentSong.src);  // Log the audio source
+
+//     if (!pause) {
+//         currentSong.play().catch(err => {
+//             console.error("Error playing audio:", err);
+//         });
+//         play.src = "images/pause.svg";
+//     }
+    
+//     document.querySelector(".songInfo").innerHTML = decodeURI(track);
+//     document.querySelector(".songTime").innerHTML = "00:00 / 00:00";
+// }
 const playMusic = (track, pause = false) => {
-    currentSong.src = `https://shastry-47.github.io/spotify-clone/songs/${currFolder}/${track}`;
-    console.log("Audio Source:", currentSong.src);  // Log the audio source
+    currentSong.src = `https://shastry-47.github.io/spotify-clone/songs/ncs/${track}`; // or use currFolder
+    console.log("Audio Source URL:", currentSong.src);  // Log the audio source
 
     if (!pause) {
         currentSong.play().catch(err => {
