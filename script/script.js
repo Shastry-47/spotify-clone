@@ -51,7 +51,7 @@ const playMusic = (track, pause = false) => {
 
 
 async function displayAlbums() {
-    let response = await fetch(`https://shastry-47.github.io/spotify-clone/songs.json`);
+    let response = await fetch(`https://shastry-47.github.io/spotify-clone/songs/songs.json`);
     let data = await response.json();
     let cardContainer = document.querySelector(".cardContainer");
 
