@@ -61,7 +61,7 @@ async function getSongs(folder) {
 //     document.querySelector(".songTime").innerHTML = "00:00 / 00:00";
 // }
 const playMusic = (track, pause = false) => {
-    currentSong.src = `https://shastry-47.github.io/spotify-clone/songs/ncs/${track}`; // or use currFolder
+    currentSong.src = `https://shastry-47.github.io/spotify-clone/songs/${currFolder}/${track}`;  // Use currFolder dynamically
     console.log("Audio Source URL:", currentSong.src);  // Log the audio source
 
     if (!pause) {
@@ -77,13 +77,15 @@ const playMusic = (track, pause = false) => {
 
 
 
+
 async function displayAlbums() {
     let response = await fetch(`https://shastry-47.github.io/spotify-clone/songs/songs.json`);
     let data = await response.json();
     let cardContainer = document.querySelector(".cardContainer");
 
+    cardContainer.innerHTML = "";  // Clear previous entries
     for (const folder in data) {
-        let album = data[folder][0];  // Assuming the first song in the folder contains album info
+        let album = data[folder][0];  // Assuming the first song in each folder contains album info
         cardContainer.innerHTML += `<div data-folder="${folder}" class="card">
             <div class="play">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="37" height="49" fill="none">
@@ -97,20 +99,22 @@ async function displayAlbums() {
         </div>`;
     }
 
+    // Add click event to each album card to load songs
     Array.from(document.getElementsByClassName("card")).forEach(e => {
         e.addEventListener("click", async item => {
-            songs = await getSongs(item.currentTarget.dataset.folder);
-            playMusic(songs[0].file);
+            songs = await getSongs(item.currentTarget.dataset.folder);  // Load songs from clicked folder
+            playMusic(songs[0].file);  // Play the first song in the folder
         });
     });
 }
 
 
 async function main() {
+    await displayAlbums();
+    
     await getSongs("ncs");
     playMusic(songs[0], true);
 
-    await displayAlbums();
 
     play.addEventListener("click", () => {
         if (currentSong.paused) {
