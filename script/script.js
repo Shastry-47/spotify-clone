@@ -21,7 +21,7 @@ async function getSongs(folder) {
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0];
     songUL.innerHTML = "";
     for (const song of songs) {
-        songUL.innerHTML += `<li><img class="invert" src="music.svg" alt=""> 
+        songUL.innerHTML += `<li><img class="invert" src="images/music.svg" alt=""> 
                                 <div class="info">
                                     <div> ${song.title}</div>
                                 </div>    
