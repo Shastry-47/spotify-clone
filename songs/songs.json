@@ -11,6 +11,30 @@
       "file":"Emitemitemito.mp3",
       "cover":"cover.jpg",
       "description":"Radhan"
+    },
+    {
+      "title":"Madhurame",
+      "file":"Madhurame.mp3",
+      "cover":"cover.jpg",
+      "description":"Radhan"
+    },
+    {
+      "title":"Mari Mari",
+      "file":"Mari Mari.mp3",
+      "cover":"cover.jpg",
+      "description":"Radhan"
+    },
+    {
+      "title":"Oopiri Aaguthunnadhey",
+      "file":"Oopiri Aaguthunnadhey.mp3",
+      "cover":"cover.jpg",
+      "description":"Radhan"
+    },
+    {
+      "title":"Telisiney Na Nuvvey",
+      "file":"Telisiney Na Nuvvey.mp3",
+      "cover":"cover.jpg",
+      "description":"Radhan"
     }
   ]
 }
