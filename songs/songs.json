@@ -1,6 +1,11 @@
 {
   "ncs":[
     {
+      "title":"Arjun Reddy",
+      "cover":"cover.jpg",
+      "description":"Radhan"
+    },
+    {
       "title":"Dhooram",
       "file":"Dhooram.mp3",
       "cover":"cover.jpg",
