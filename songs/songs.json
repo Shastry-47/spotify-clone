@@ -37,4 +37,30 @@
       "description":"Radhan"
     }
   ]
+  "cs":[
+    {
+      "title":"Gira Gira Gira",
+      "file":"Gira Gira Gira.mp3",
+      "cover":"cover.jpg",
+      "description":"Radhan"
+    },
+    {
+      "title":"Nee Neeli Kannullona",
+      "file":"Nee Neeli Kannullona.mp3",
+      "cover":"cover.jpg",
+      "description":"Radhan"
+    },
+    {
+      "title":"O Kalala Kathala",
+      "file":"O Kalala Kathala.mp3",
+      "cover":"cover.jpg",
+      "description":"Radhan"
+    },
+    {
+      "title":"Yetu Pone",
+      "file":"Yetu Pone.mp3",
+      "cover":"cover.jpg",
+      "description":"Radhan"
+    }
+  ]
 }
