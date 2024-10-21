@@ -66,6 +66,7 @@ function secondsToMinutes(seconds) {
 
 
 const playMusic = (track, pause = false) => {
+    console.log("Playing track:", track);  // Log the track for debugging
     currentSong.src = `https://shastry-47.github.io/spotify-clone/songs/${currFolder}/${track}`;  // Use currFolder dynamically
     console.log("Audio Source URL:", currentSong.src);  // Log the audio source
 
