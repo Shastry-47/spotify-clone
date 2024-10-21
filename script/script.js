@@ -12,54 +12,57 @@ function secondsToMinutes(seconds) {
 }
 
     async function getSongs(folder) {
-        currFolder = folder;
-        try {
-            let response = await fetch(`https://shastry-47.github.io/spotify-clone/songs/songs.json`);
-            let data = await response.json();
-            
-            if (!data[folder] || data[folder].length === 0) {
-                console.error(`No songs found for folder: ${folder}`);
-                return [];  // Return an empty array if no songs are found
-            }
-    
-            songs = data[folder];  // Assign songs only if folder is valid
-    
-            // Log the songs to ensure they're loaded correctly
-            console.log(songs);
-    
-            let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0];
-            songUL.innerHTML = "";  // Clear the previous song list
-            
-            for (const song of songs) {
-                songUL.innerHTML += `<li><img class="invert" src="images/music.svg" alt=""> 
-                                       <div class="info">
-                                           <div> ${song.title}</div>
-                                       </div>    
-                                       <div class="playnow">
-                                           <span>Play Now</span>
-                                           <img class="invert" src="images/play.svg" alt="">
-                                       </div> 
-                                   </li>`;
-            }
-    
-            // Clear previous click events to avoid duplication
-            Array.from(songUL.getElementsByTagName("li")).forEach((e, index) => {
-                e.addEventListener("click", () => {
-                    const selectedSong = songs[index];
-                    if (selectedSong && selectedSong.file) {
-                        playMusic(selectedSong.file);  // Ensure that selectedSong.file contains the file name
-                    } else {
-                        console.error("Selected song is not valid:", selectedSong);
-                    }
-                });
-            });
-    
-            return songs;  // Return the songs array
-        } catch (error) {
-            console.error('Error fetching songs:', error);
-            return [];  // Return an empty array in case of error
+    currFolder = folder;
+    try {
+        let response = await fetch(`https://shastry-47.github.io/spotify-clone/songs/songs.json`);
+        let data = await response.json();
+        
+        if (!data[folder] || data[folder].length === 0) {
+            console.error(`No songs found for folder: ${folder}`);
+            return [];  // Return an empty array if no songs are found
         }
+
+        // Skip the first element (album info) and only assign the actual songs
+        songs = data[folder].slice(1);  // Exclude the first element for songs
+
+        // Log the songs to ensure they're loaded correctly
+        console.log(songs);
+
+        let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0];
+        songUL.innerHTML = "";  // Clear the previous song list
+
+        // Create list items for each song (starting from index 1)
+        for (const song of songs) {
+            songUL.innerHTML += `<li><img class="invert" src="images/music.svg" alt=""> 
+                                   <div class="info">
+                                       <div> ${song.title}</div>
+                                   </div>    
+                                   <div class="playnow">
+                                       <span>Play Now</span>
+                                       <img class="invert" src="images/play.svg" alt="">
+                                   </div> 
+                               </li>`;
+        }
+
+        // Clear previous click events to avoid duplication
+        Array.from(songUL.getElementsByTagName("li")).forEach((e, index) => {
+            e.addEventListener("click", () => {
+                const selectedSong = songs[index];  // Now we correctly reference songs starting from index 1
+                if (selectedSong && selectedSong.file) {
+                    playMusic(selectedSong.file);  // Play the selected song file
+                } else {
+                    console.error("Selected song is not valid:", selectedSong);
+                }
+            });
+        });
+
+        return songs;  // Return the songs array
+    } catch (error) {
+        console.error('Error fetching songs:', error);
+        return [];  // Return an empty array in case of error
     }
+}
+
 
 
 const playMusic = (track, pause = false) => {
