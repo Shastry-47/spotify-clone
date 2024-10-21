@@ -110,7 +110,7 @@ async function displayAlbums() {
         e.addEventListener("click", async item => {
             songs = await getSongs(item.currentTarget.dataset.folder);  // Load songs from clicked folder
             if (songs.length > 0) {  // Check if songs are loaded successfully
-                playMusic(songs[0].file);  // Play the first song in the folder
+                playMusic(songs[1].file);  // Play the first song in the folder
             } else {
                 console.error("No songs available to play from this album.");
             }
@@ -124,7 +124,7 @@ async function main() {
     await displayAlbums();
     
     await getSongs("ncs");
-    playMusic(songs[0], true);
+    playMusic(songs[1], true);
 
 
     play.addEventListener("click", () => {
